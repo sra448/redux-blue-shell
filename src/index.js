@@ -1,29 +1,77 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import { init } from "./redux-simple";
+import { createStore } from "redux";
+import {
+  map,
+  lensPath,
+  view,
+  over,
+  type,
+  mapObjIndexed,
+  join,
+  dropLast
+} from "ramda";
 
-const model = {
-  state: {
-    count: 0
-  },
-  actions: {
-    up: state => () => ({ count: state.count + 1 }),
-    down: state => () => ({ count: state.count - 1 })
-  },
-  effects: {
-    upDelayed: actions => () => setTimeout(actions.up, 500)
+const collapseModelLeaves = (name, obj) => {
+  if (obj[name] !== undefined) {
+    return obj[name];
+  } else {
+    const recur = map(x => (x[name] !== undefined ? x[name] : recur(x)));
+    return recur(obj);
   }
 };
 
-const View = ({ state, actions, effects }) => (
-  <div>
-    <h1>{state.count}</h1>
-    <button onClick={actions.down}>down</button>
-    <button onClick={actions.up}>up</button>
-    <button onClick={effects.upDelayed}>up later</button>
-  </div>
-);
+const mapLeavesWithPath = (fn, obj, path = []) =>
+  mapObjIndexed(
+    (value, key) =>
+      type(value) === "Object"
+        ? mapLeavesWithPath(fn, value, [...path, key])
+        : fn(value, [...path, key]),
+    obj
+  );
 
-const App = init(model, View);
+export const init = (model, View) => {
+  const initialState = collapseModelLeaves("state", model);
+  const actions = collapseModelLeaves("actions", model);
+  const effects = collapseModelLeaves("effects", model);
 
-ReactDOM.render(<App />, document.getElementById("root"));
+  const reducer = (state = initialState, { type, args }) => {
+    const path = type.split(".");
+    const action = view(lensPath(path), actions);
+
+    return action
+      ? over(lensPath(dropLast(1, path)), action(state), state)
+      : state;
+  };
+
+  const store = createStore(reducer);
+
+  const actionCreators = mapLeavesWithPath(
+    (_value, path) => (...args) => {
+      store.dispatch({ args, type: join(".", path) });
+    },
+    actions
+  );
+
+  const effectCreators = mapLeavesWithPath(
+    fn => fn(actionCreators, store),
+    effects
+  );
+
+  return class Container extends React.Component {
+    constructor() {
+      super();
+      this.state = store.getState();
+      store.subscribe(() => this.setState(store.getState()));
+    }
+
+    render() {
+      return (
+        <View
+          state={this.state}
+          actions={actionCreators}
+          effects={effectCreators}
+        />
+      );
+    }
+  };
+};
