@@ -1,7 +1,7 @@
 const React = require("react");
 const renderer = require("react-test-renderer");
 
-const { init } = require("../build/redux-simple-app");
+const { init } = require("../build/redux-blue-shell");
 
 // simple counter app to test against
 

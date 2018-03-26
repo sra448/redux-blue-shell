@@ -6,7 +6,7 @@ import jsx from "rollup-plugin-jsx";
 export default {
   input: "src/index.js",
   output: {
-    file: "build/redux-simple-app.js",
+    file: "build/redux-blue-shell.js",
     format: "cjs"
   },
   plugins: [

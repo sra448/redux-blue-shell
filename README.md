@@ -1,18 +1,18 @@
-# Redux Simple App
+# Redux Blue Shell
 
-Redux Simple App is a simple but opinionated way to build apps with React and Redux. It is inspired by [Hyperapp](https://hyperapp.js.org/), [Elm](http://elm-lang.org/) and [Rematch](https://rematch.gitbooks.io/rematch/#getting-started).
+Redux Blue Shell is a simple but opinionated way to build apps with React and Redux. It is inspired by [Hyperapp](https://hyperapp.js.org/), [Elm](http://elm-lang.org/) and [Rematch](https://rematch.gitbooks.io/rematch/#getting-started).
 
 ## Install
 
-The following does not work, but hopefully will soon
+The following does not work, but might someday
 
 ```
-npm install redux-simple-app --save
+npm install redux-blue-shell --save
 ```
 
 ## Getting Started
 
-In Redux Simple App you define **models** which hold internal **state** that can be transformed by **actions** that themselves can be triggered by your view or by an **effect**.
+In Redux Blue Shell you define **models** which hold internal **state** that can be transformed by **actions** that themselves can be triggered by your view or by an **effect**.
 
 * **State**: An object that contains this models internal knowledge
 * **Actions**: Functions that you can call directly from within your view. They will transform the state.
@@ -23,7 +23,7 @@ In Redux Simple App you define **models** which hold internal **state** that can
 ```jsx
 import React from "react";
 import ReactDOM from "react-dom";
-import { init } from "./redux-simple";
+import { init } from "redux-blue-shell";
 
 const model = {
   state: {
@@ -58,8 +58,8 @@ should work as expected
 
 ## Roadmap
 
-* add tests
-* add `connect` function
+* add more tests
+* add a `connect` function
 * add possibility to subscribe to actions in different models
 * add to `npm`
 * create a documentation / page
