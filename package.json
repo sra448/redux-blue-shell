@@ -4,7 +4,7 @@
   "scripts": {
     "start": "rollup -c",
     "build": "rollup -c",
-    "test": "jest"
+    "test": "yarn start && jest"
   },
   "dependencies": {
     "ramda": "^0.25.0",

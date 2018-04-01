@@ -18,6 +18,11 @@ exports[`unnested simple model actions work as intended 1`] = `
   <button
     onClick={[Function]}
   >
+    up more
+  </button>
+  <button
+    onClick={[Function]}
+  >
     up later
   </button>
 </div>
@@ -26,7 +31,7 @@ exports[`unnested simple model actions work as intended 1`] = `
 exports[`unnested simple model actions work as intended 2`] = `
 <div>
   <h1>
-    1
+    11
   </h1>
   <button
     onClick={[Function]}
@@ -37,6 +42,11 @@ exports[`unnested simple model actions work as intended 2`] = `
     onClick={[Function]}
   >
     up
+  </button>
+  <button
+    onClick={[Function]}
+  >
+    up more
   </button>
   <button
     onClick={[Function]}
@@ -64,6 +74,11 @@ exports[`unnested simple model effects work as intended 1`] = `
   <button
     onClick={[Function]}
   >
+    up more
+  </button>
+  <button
+    onClick={[Function]}
+  >
     up later
   </button>
 </div>
@@ -83,6 +98,11 @@ exports[`unnested simple model effects work as intended 2`] = `
     onClick={[Function]}
   >
     up
+  </button>
+  <button
+    onClick={[Function]}
+  >
+    up more
   </button>
   <button
     onClick={[Function]}

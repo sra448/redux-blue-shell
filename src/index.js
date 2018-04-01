@@ -40,7 +40,9 @@ export const init = (model, View) => {
     const modelStateLens = lensPath(dropLast(1, path));
     const modelState = view(modelStateLens, state);
 
-    return action ? over(modelStateLens, action(modelState), state) : state;
+    return action
+      ? over(modelStateLens, () => action(modelState)(...args), state)
+      : state;
   };
 
   const store = createStore(reducer);
