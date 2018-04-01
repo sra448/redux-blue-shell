@@ -1,0 +1,125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`nested simple model actions work as intended 1`] = `
+<div>
+  <h1>
+    0
+  </h1>
+  <button
+    onClick={[Function]}
+  >
+    up
+  </button>
+  <button
+    onClick={[Function]}
+  >
+    up later
+  </button>
+  <h1>
+    100
+  </h1>
+  <button
+    onClick={[Function]}
+  >
+    up
+  </button>
+  <button
+    onClick={[Function]}
+  >
+    up later
+  </button>
+</div>
+`;
+
+exports[`nested simple model actions work as intended 2`] = `
+<div>
+  <h1>
+    2
+  </h1>
+  <button
+    onClick={[Function]}
+  >
+    up
+  </button>
+  <button
+    onClick={[Function]}
+  >
+    up later
+  </button>
+  <h1>
+    101
+  </h1>
+  <button
+    onClick={[Function]}
+  >
+    up
+  </button>
+  <button
+    onClick={[Function]}
+  >
+    up later
+  </button>
+</div>
+`;
+
+exports[`nested simple model effects work as intended 1`] = `
+<div>
+  <h1>
+    0
+  </h1>
+  <button
+    onClick={[Function]}
+  >
+    up
+  </button>
+  <button
+    onClick={[Function]}
+  >
+    up later
+  </button>
+  <h1>
+    100
+  </h1>
+  <button
+    onClick={[Function]}
+  >
+    up
+  </button>
+  <button
+    onClick={[Function]}
+  >
+    up later
+  </button>
+</div>
+`;
+
+exports[`nested simple model effects work as intended 2`] = `
+<div>
+  <h1>
+    1
+  </h1>
+  <button
+    onClick={[Function]}
+  >
+    up
+  </button>
+  <button
+    onClick={[Function]}
+  >
+    up later
+  </button>
+  <h1>
+    101
+  </h1>
+  <button
+    onClick={[Function]}
+  >
+    up
+  </button>
+  <button
+    onClick={[Function]}
+  >
+    up later
+  </button>
+</div>
+`;

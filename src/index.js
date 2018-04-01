@@ -37,10 +37,10 @@ export const init = (model, View) => {
   const reducer = (state = initialState, { type, args }) => {
     const path = type.split(".");
     const action = view(lensPath(path), actions);
+    const modelStateLens = lensPath(dropLast(1, path));
+    const modelState = view(modelStateLens, state);
 
-    return action
-      ? over(lensPath(dropLast(1, path)), action(state), state)
-      : state;
+    return action ? over(modelStateLens, action(modelState), state) : state;
   };
 
   const store = createStore(reducer);
@@ -52,10 +52,11 @@ export const init = (model, View) => {
     actions
   );
 
-  const effectCreators = mapLeavesWithPath(
-    fn => fn(actionCreators, store),
-    effects
-  );
+  const effectCreators = mapLeavesWithPath((fn, path) => {
+    const modelActionsLens = lensPath(dropLast(1, path));
+    const actions = view(modelActionsLens, actionCreators);
+    return fn(actions, store);
+  }, effects);
 
   return class Container extends React.Component {
     constructor() {
