@@ -1,11 +1,23 @@
 {
   "name": "redux-blue-shell",
   "version": "0.1.1",
+  "description": "a simple way to build apps using React and Redux",
+  "keywords": ["redux", "react", "simple", "blue shell", "state management"],
+  "authors": [
+    "Florian Unternaehrer <justus.jonas@gmail.com> (https://github.com/sra448)"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sra448/redux-blue-shell.git"
+  },
+  "license": "MIT",
   "scripts": {
     "start": "rollup -c",
     "build": "rollup -c",
     "test": "jest"
   },
+  "files": "./build",
+  "main": "./build/redux-blue-shell",
   "dependencies": {
     "ramda": "^0.25.0",
     "react": "^16.2.0",
